@@ -376,4 +376,28 @@ int __tmain( )
 
 ```
 
+#string字符串的解法
+-------
+```
+class Solution {
+public:
+    vector<int> printNumbers(int n) {
+        vector<int> res;
+        if(n == 0) return res;
+        string str;
+        for(int i = 0; i < n; i++)
+        {
+            str += '9';
+        }
+        int cnt = 0;
+        while(to_string(cnt) < str)
+        {
+            res.push_back(cnt + 1);
+            cnt += 1;
+        }
+        return res;
+    }
+};
+```
+
 
