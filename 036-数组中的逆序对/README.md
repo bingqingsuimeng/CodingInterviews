@@ -44,6 +44,8 @@
 
 #归并排序 by bingiqng
 -------
+>1.参考https://zhuanlan.zhihu.com/p/166127615
+>2.参考https://blog.csdn.net/apple_67445472/article/details/143170030
 >考虑一下，逆序是说a[i]>a[j]，i<j。那么在排序的过程中，会把a[i]和a[j]交换过来，这个交换的过程，每交换一次，就是一个逆序对的“正序”过程。
 ```cpp
 class Solution {
