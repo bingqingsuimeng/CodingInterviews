@@ -26,6 +26,32 @@
 
 >统计一个数字在排序数组中出现的次数。
 
+# 二分法 by bingqing
+参考:https://www.cnblogs.com/benbenhan/articles/15339432.html
+-------
+```cpp
+class Solution {
+public:
+	int biSearch(vector<int> &scores, float target){
+		int left = 0;
+		int right = scores.size() - 1;
+		while(left <= right){
+			int mid = left + (right - left)/2;
+			if(scores[mid] > target){
+				right = mid - 1;
+			}else{
+				left = mid + 1;
+			}
+		}
+		
+		return left;
+	}
+    int countTarget(vector<int>& scores, int target) {
+        return biSearch(scores, target + 0.5) - biSearch(scores, target - 0.5);
+    }
+};
+```
+-------
 
 #暴力方法
 -------
