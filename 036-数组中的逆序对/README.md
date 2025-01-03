@@ -42,7 +42,58 @@
 >5
 
 
-
+#归并排序 by bingiqng
+-------
+>考虑一下，逆序是说a[i]>a[j]，i<j。那么在排序的过程中，会把a[i]和a[j]交换过来，这个交换的过程，每交换一次，就是一个逆序对的“正序”过程。
+```cpp
+class Solution {
+public:
+    	vector<int> tmp;
+	int merge(vector<int>& record, int l, int mid, int r){
+		int i = l; int j = mid +1; int k = l;
+		int count = 0;
+		while(i <= mid && j <= r){
+			if(record[i] <= record[j]){
+				tmp[k++] = record[i++];
+			}else{
+				tmp[k++] = record[j++];
+				count += (mid + 1) - i;
+			}
+		}
+		
+		while(i <= mid){
+			tmp[k++] = record[i++];
+		}
+		
+		while(j <= r){
+			tmp[k++] = record[j++];
+		}
+		
+			for(int k = l; k <= r; k++){
+			record[k] = tmp[k];
+		}
+		
+		return count;
+	}
+	
+	int mergeCount(vector<int>& record, int l, int r){
+		int count = 0;
+		if(l < r){
+			int mid = l + (r - l)/2;
+			count += mergeCount(record, l, mid);
+			count += mergeCount(record, mid + 1, r);
+			count += merge(record, l, mid, r);
+		}
+		return count;
+	}
+	
+    int reversePairs(vector<int>& record) {
+		tmp.resize(record.size());
+		return mergeCount(record, 0, record.size() - 1);
+    }
+};
+```
+-------
 
 #暴力解法
 -------
